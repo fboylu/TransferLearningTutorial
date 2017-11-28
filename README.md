@@ -136,3 +136,5 @@ az ml notebook start
 4. Your default browser will  automatically be launched with Jupyter server pointing to the project home directory. You can also use the URL and token displayed in the CLI window to launch notebooks on other browser windows.
 5. Next, click on the first notebook, if you receive a prompt asking for which kernel to use, select the kernel with the name **"Your project name myvm"** with the exception of last notebook which will use the kernel **"Your project name local"**. You will find a note at the beggining of each notebook highlighting which kernel to use for that notebook.
 7. Follow the instructions and excute the notebook cells.
+
+created by a Microsoft employee.
