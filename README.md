@@ -79,24 +79,24 @@ In the next section, you will be creating a compute context as remote docker on 
 az ml computetarget attach remotedocker --name myvm --address [Your VM's IP Address Here!!] --username [Your User Name Here!!] --password 
 [Your Password Here!!] 
 ```
-3. Next, run the following command  to prepare the Docker image on your DSVM.
 
-```
-az ml experiment prepare -c myvm
-```
 ## Configure Azure ML Workbench to Access GPU
 1. Go back to Azure ML Workbench and click on the **Files** which is the last item under the home icon on the left bar.
 2. Under **Search Files** expand the **aml_config** folder. You will see two new files **myvm.compute** and **myvm.runconfig** (if not , hit the **Refresh** button).
-3. Open myvm.compute and change the **baseDockerImage** to **microsoft/mmlspark:plus-gpu-0.7.9** and add a new line **nvidiaDocker: true** and save the file. The file should have the following two lines:
+3. Open myvm.compute and change the **baseDockerImage** to **microsoft/mmlspark:plus-gpu-0.9.9** and add a new line **nvidiaDocker: true** and save the file. The file should have the following two lines:
 ```
-baseDockerImage: microsoft/mmlspark:plus-gpu-0.7.91
+baseDockerImage: microsoft/mmlspark:plus-gpu-0.9.9
 nvidiaDocker: true
 ```
 4. Now, open **myvm.runconfig** and change **Framework** to **Python** and save the file. The file should have the following line:
 ```
 Framework: Python
 ```
+5. Next, run the following command on the Command Line Window  to prepare the Docker image on your DSVM.
 
+```
+az ml experiment prepare -c myvm
+```
 # Prepare Training Data
 
 This scenario assumes that you have two classes of images that you would like to classify as fail or pass. You can choose to bring in your own dataset given that you have two categories of images or use a generic dataset from Kaggle. If you are bringing your own dataset, zip your images in a file called train.zip. If not using your own dataset, go to the [Kaggle dataset page](https://www.kaggle.com/c/dogs-vs-cats/data) and click download button for the train.zip file. You will be asked to log in to Kaggle and once logged in you will be redirected back to the dataset page. The size of this train.zip file is 543.16 MB. After downloading the zip file, follow the steps below to upload it to Azure Blob Storage.
